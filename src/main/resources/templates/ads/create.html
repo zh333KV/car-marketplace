@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать объявление</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" th:href="@{/}">Продажа авто</a>
+        <nav class="nav">
+            <a th:href="@{/ads}">Объявления</a>
+        </nav>
+    </div>
+</header>
+<main class="container">
+    <section class="panel">
+        <h1 class="page-title">Подать объявление</h1>
+        <form class="form-grid" th:action="@{/ads/create}" th:object="${adCreateRequest}" method="post" enctype="multipart/form-data">
+            <div>
+                <label class="label">Название</label>
+                <input class="input" type="text" th:field="*{title}">
+                <div class="errors" th:errors="*{title}"></div>
+            </div>
+            <div>
+                <label class="label">Описание</label>
+                <textarea class="textarea" th:field="*{description}"></textarea>
+                <div class="errors" th:errors="*{description}"></div>
+            </div>
+            <div>
+                <label class="label">Цена, $</label>
+                <input class="input" type="number" step="0.01" th:field="*{price}">
+                <div class="errors" th:errors="*{price}"></div>
+            </div>
+            <div>
+                <label class="label">Город</label>
+                <input class="input" type="text" th:field="*{city}">
+                <div class="errors" th:errors="*{city}"></div>
+            </div>
+            <div>
+                <label class="label">Фотографии</label>
+                <input class="file-input" type="file" id="images" name="images" multiple accept="image/*">
+                <div class="preview" id="preview"></div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Опубликовать</button>
+                <a class="btn btn-muted" th:href="@{/ads}">Отмена</a>
+            </div>
+        </form>
+    </section>
+</main>
+<script th:src="@{/js/preview.js}"></script>
+</body>
+</html>

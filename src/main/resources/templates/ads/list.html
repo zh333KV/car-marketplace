@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объявления</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" th:href="@{/}">Продажа авто</a>
+        <nav class="nav">
+            <a th:href="@{/ads/create}">Подать объявление</a>
+            <a th:href="@{/}">Главная</a>
+        </nav>
+    </div>
+</header>
+<main class="container">
+    <section class="panel">
+        <h1 class="page-title">Все объявления</h1>
+        <form class="filters" th:action="@{/ads/search}" method="get">
+            <input class="input" type="text" name="q" placeholder="Марка, модель, ключевое слово" th:value="${q}">
+            <input class="input" type="text" name="city" placeholder="Город" th:value="${city}">
+            <button class="btn btn-primary" type="submit">Поиск</button>
+        </form>
+        <div class="empty" th:if="${#lists.isEmpty(ads)}">
+            Пока нет объявлений
+        </div>
+        <div class="cards" th:unless="${#lists.isEmpty(ads)}">
+            <article class="card" th:each="ad : ${ads}">
+                <div class="card-media" th:if="${ad.mainImage != null}">
+                    <img class="js-image-modal" th:src="@{${ad.mainImage}}" alt="Фото объявления">
+                </div>
+                <div class="card-media" th:unless="${ad.mainImage != null}"></div>
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <a th:href="@{/ads/{id}(id=${ad.id})}" th:text="${ad.title}"></a>
+                    </h3>
+                    <p class="price" th:text="'$' + ${ad.price}"></p>
+                    <p class="meta" th:text="${ad.city}"></p>
+                    <p class="meta" th:if="${ad.author != null and ad.author.phone != null and !#strings.isEmpty(ad.author.phone)}">
+                        Телефон: <span th:text="${ad.author.phone}"></span>
+                    </p>
+                    <p class="meta" th:text="${ad.description}"></p>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+<script th:src="@{/js/image-modal.js}"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="container">
+    <section class="panel" style="max-width: 560px; margin: 0 auto;">
+        <h1 class="page-title">Регистрация</h1>
+        <div class="errors" th:if="${error}" th:text="${error}"></div>
+        <form class="form-grid" th:action="@{/auth/register}" th:object="${registerRequest}" method="post">
+            <div>
+                <label class="label">Email</label>
+                <input class="input" type="text" th:field="*{email}">
+                <div class="errors" th:errors="*{email}"></div>
+            </div>
+            <div>
+                <label class="label">Пароль</label>
+                <input class="input" type="password" th:field="*{password}">
+                <div class="errors" th:errors="*{password}"></div>
+            </div>
+            <div>
+                <label class="label">Имя</label>
+                <input class="input" type="text" th:field="*{firstName}">
+                <div class="errors" th:errors="*{firstName}"></div>
+            </div>
+            <div>
+                <label class="label">Телефон</label>
+                <input class="input" type="text" th:field="*{phone}">
+            </div>
+            <div>
+                <label class="label">Город</label>
+                <input class="input" type="text" th:field="*{city}">
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+                <a class="btn btn-muted" th:href="@{/}">Главная</a>
+            </div>
+        </form>
+        <p class="meta">Уже есть аккаунт? <a th:href="@{/auth/login}">Войти</a></p>
+    </section>
+</main>
+</body>
+</html>

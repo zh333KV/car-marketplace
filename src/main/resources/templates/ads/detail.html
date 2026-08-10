@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объявление</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" th:href="@{/}">Продажа авто</a>
+        <nav class="nav">
+            <a th:href="@{/ads}">Назад к списку</a>
+        </nav>
+    </div>
+</header>
+<main class="container">
+    <section class="panel">
+        <h1 class="page-title" th:text="${ad.title}"></h1>
+        <div class="gallery" th:if="${ad.images != null and !#lists.isEmpty(ad.images)}">
+            <img class="js-image-modal" th:each="image : ${ad.images}" th:src="@{${image.filePath}}" alt="Фото объявления">
+        </div>
+        <p class="price" th:text="'$' + ${ad.price}"></p>
+        <p class="meta">Город: <span th:text="${ad.city}"></span></p>
+        <p th:text="${ad.description}"></p>
+        <p class="meta">
+            Продавец:
+            <a th:href="@{/users/{id}(id=${ad.author.id})}" th:text="${ad.author.firstName}"></a>
+        </p>
+        <p class="meta" th:if="${ad.author != null and ad.author.phone != null and !#strings.isEmpty(ad.author.phone)}">
+            Телефон продавца: <span th:text="${ad.author.phone}"></span>
+        </p>
+        <p class="meta">Дата публикации: <span th:text="${#temporals.format(ad.createdAt, 'dd MMM yyyy')}"></span></p>
+        <div class="form-actions" th:if="${canEdit}">
+            <a class="btn btn-muted" th:href="@{/ads/edit/{id}(id=${ad.id})}">Редактировать</a>
+            <form th:action="@{/ads/delete/{id}(id=${ad.id})}"
+                  method="post"
+                  onsubmit="return confirm('Вы уверены, что хотите удалить объявление?');">
+                <button class="btn btn-danger" type="submit">Удалить</button>
+            </form>
+        </div>
+    </section>
+</main>
+<script th:src="@{/js/image-modal.js}"></script>
+</body>
+</html>
