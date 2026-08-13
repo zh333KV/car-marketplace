@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/app.css}">
 </head>
 <body>
-<header class="topbar">
-    <div class="topbar-inner">
-        <a class="brand" th:href="@{/}">Продажа авто</a>
-        <nav class="nav">
-            <a th:href="@{/ads/{id}(id=${adId})}">К объявлению</a>
-        </nav>
-    </div>
-</header>
+<header th:replace="~{fragments/header :: header}"></header>
 <main class="container">
     <section class="panel">
         <h1 class="page-title">Редактирование объявления</h1>

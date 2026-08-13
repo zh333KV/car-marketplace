@@ -7,32 +7,11 @@
     <link rel="stylesheet" th:href="@{/css/app.css}">
 </head>
 <body>
-<header class="topbar">
-    <div class="topbar-inner">
-        <a class="brand" th:href="@{/}">Продажа авто</a>
-        <nav class="nav">
-            <a th:href="@{/ads}">Все объявления</a>
-            <a th:href="@{/ads/create}">Подать объявление</a>
-            <span sec:authorize="isAnonymous()">
-                <a th:href="@{/auth/login}">Вход</a>
-                <a th:href="@{/auth/register}">Регистрация</a>
-            </span>
-            <span sec:authorize="isAuthenticated()">
-                <a th:if="${currentUser != null}"
-                   th:href="@{/users/{id}(id=${currentUser.id})}"
-                   th:text="${currentUser.firstName}">
-                </a>
-            </span>
-            <form sec:authorize="isAuthenticated()" th:action="@{/auth/logout}" method="post">
-                <button class="btn btn-muted" type="submit">Выйти</button>
-            </form>
-        </nav>
-    </div>
-</header>
+<header th:replace="~{fragments/header :: header}"></header>
 
 <main class="container">
     <section class="panel">
-        <h1 class="page-title">Свежие объявления</h1>
+        <h1 class="page-title">Актуальные объявления</h1>
         <div class="empty" th:if="${#lists.isEmpty(ads)}">
             Пока нет объявлений
         </div>
