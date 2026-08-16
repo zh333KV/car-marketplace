@@ -14,9 +14,9 @@
         <div class="gallery" th:if="${ad.images != null and !#lists.isEmpty(ad.images)}">
             <img class="js-image-modal" th:each="image : ${ad.images}" th:src="@{${image.filePath}}" alt="Фото объявления">
         </div>
-        <p class="price" th:text="'$' + ${ad.price}"></p>
+        <p class="price" th:text="${#numbers.formatDecimal(ad.price, 1, 0)} + '$'"></p>
         <p class="meta">Город: <span th:text="${ad.city}"></span></p>
-        <p th:text="${ad.description}"></p>
+        <p class="ad-description" th:text="${ad.description}"></p>
         <p class="meta">
             Продавец:
             <a th:href="@{/users/{id}(id=${ad.author.id})}" th:text="${ad.author.firstName}"></a>

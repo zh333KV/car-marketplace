@@ -83,6 +83,10 @@ button.btn:focus {
     padding: 0 20px;
 }
 
+.ad-description {
+    white-space: pre-line;
+}
+
 .panel {
     background: var(--surface);
     border: 1px solid var(--border);

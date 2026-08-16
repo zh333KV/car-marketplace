@@ -29,12 +29,12 @@
                     <h3 class="card-title">
                         <a th:href="@{/ads/{id}(id=${ad.id})}" th:text="${ad.title}"></a>
                     </h3>
-                    <p class="price" th:text="'$' + ${ad.price}"></p>
+                    <p class="price" th:text="${#numbers.formatDecimal(ad.price, 1, 0)} + '$'"></p>
                     <p class="meta" th:text="${ad.city}"></p>
                     <p class="meta" th:if="${ad.author != null and ad.author.phone != null and !#strings.isEmpty(ad.author.phone)}">
                         Телефон: <span th:text="${ad.author.phone}"></span>
                     </p>
-                    <p class="meta" th:text="${ad.description}"></p>
+                    <p class="meta" th:text="${#strings.abbreviate(ad.description, 100)}"></p>
                 </div>
             </article>
         </div>

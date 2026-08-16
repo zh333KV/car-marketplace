@@ -24,7 +24,7 @@
             </div>
             <div>
                 <label class="label">Цена, $</label>
-                <input class="input" type="number" step="0.01" th:field="*{price}">
+                <input class="input" type="number" step="1" th:field="*{price}">
                 <div class="errors" th:errors="*{price}"></div>
             </div>
             <div>
