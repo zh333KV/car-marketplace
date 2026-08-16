@@ -34,4 +34,16 @@ public class FileStorageServiceImpl implements FileStorageService {
         Files.copy(file.getInputStream(), filePath);
         return fileName;
     }
+    @Override
+    public void delete(String fileName) {
+        if (fileName == null || fileName.isBlank()) {
+            return;
+        }
+        try {
+            Path filePath = Paths.get(uploadDir).resolve(fileName);
+            Files.deleteIfExists(filePath);
+        } catch (IOException e) {
+            // файл не удалился, но само объявление всё равно удаляется
+        }
+    }
 }

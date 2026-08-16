@@ -79,6 +79,7 @@ public class AdServiceImpl implements AdService {
     public void deleteAd(Long adId, User currentUser) {
         Ad ad = findById(adId);
         checkOwnership(ad, currentUser);
+        deleteImages(ad);
         adRepository.delete(ad);
     }
     @Override
@@ -126,6 +127,11 @@ public class AdServiceImpl implements AdService {
             } catch (IOException e) {
                 throw new RuntimeException("Не удалось сохранить файл: " + file.getOriginalFilename(), e);
             }
+        }
+    }
+    private void deleteImages(Ad ad) {
+        for (AdImage image : ad.getImages()) {
+            fileStorageService.delete(image.getFileName());
         }
     }
     private List<Ad> sortByCreatedAtDesc(List<Ad> ads) {
