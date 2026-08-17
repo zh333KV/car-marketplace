@@ -5,7 +5,7 @@
     <div class="topbar-inner">
         <a class="brand" th:href="@{/}">Продажа авто</a>
         <nav class="nav">
-            <a th:href="@{/ads}">Все объявления</a>
+            <a th:href="@{/ads}">Поиск</a>
             <a sec:authorize="isAuthenticated()" th:href="@{/ads/create}">Подать объявление</a>
             <a sec:authorize="isAnonymous()" th:href="@{/auth/login}">Войти</a>
             <a sec:authorize="isAnonymous()" th:href="@{/auth/register}">Регистрация</a>

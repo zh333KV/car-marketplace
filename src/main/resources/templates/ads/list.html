@@ -10,7 +10,7 @@
 <header th:replace="~{fragments/header :: header}"></header>
 <main class="container">
     <section class="panel">
-        <h1 class="page-title">Все объявления</h1>
+        <h1 class="page-title">Поиск</h1>
         <form class="filters" th:action="@{/ads/search}" method="get">
             <input class="input" type="text" name="q" placeholder="Марка, модель, ключевое слово" th:value="${q}">
             <input class="input" type="text" name="city" placeholder="Город" th:value="${city}">
