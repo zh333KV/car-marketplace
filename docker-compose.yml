@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:16
     environment:
-      POSTGRES_DB: autosales_DB
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - db_data:/var/lib/postgresql/data
     healthcheck:
@@ -19,9 +19,9 @@ services:
       db:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/autosales_DB
-      DB_USERNAME: postgres
-      DB_PASSWORD: password
+      DB_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      DB_USERNAME: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "8080:8080"
     volumes:
