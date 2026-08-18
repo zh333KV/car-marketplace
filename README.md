@@ -151,12 +151,6 @@ Copy the example environment file:
 cp .env.example .env
 ```
 
-On Windows PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-```
-
 Then configure the database credentials in `.env`.
 
 Example:
@@ -164,7 +158,7 @@ Example:
 ```dotenv
 POSTGRES_DB=autosales_DB
 POSTGRES_USER=postgres
-POSTGRES_PASSWORD=change_me
+POSTGRES_PASSWORD=password
 ```
 
 ### 3. Start the application
