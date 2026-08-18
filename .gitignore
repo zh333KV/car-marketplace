@@ -1,6 +1,5 @@
 HELP.md
 target/
-.env
 uploads/
 !**/src/main/**/target/
 !**/src/test/**/target/
