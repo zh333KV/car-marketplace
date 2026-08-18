@@ -134,7 +134,6 @@ When running inside Docker, the application connects to the PostgreSQL service t
 Make sure you have installed:
 
 * Docker
-* Docker Compose
 
 ### 1. Clone the repository
 
