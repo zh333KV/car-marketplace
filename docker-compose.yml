@@ -21,7 +21,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      DB_URL: autosales_DB
+      DB_URL: jdbc:postgresql://db:5432/autosales_DB
       DB_USERNAME: postgres
       DB_PASSWORD: password
     ports:
