@@ -111,22 +111,6 @@ GET  /ads/search          Search listings
 
 ---
 
-## 🗄️ Database
-
-PostgreSQL 16 is used as the primary database.
-
-The application connects to PostgreSQL through environment variables:
-
-```properties
-spring.datasource.url=${DB_URL:jdbc:postgresql://localhost:5432/autosales_DB}
-spring.datasource.username=${DB_USERNAME:postgres}
-spring.datasource.password=${DB_PASSWORD:change_me}
-```
-
-When running inside Docker, the application connects to the PostgreSQL service through the Docker network.
-
----
-
 ## 🐳 Running with Docker
 
 ### Requirements
