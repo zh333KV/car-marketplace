@@ -143,25 +143,7 @@ git clone https://github.com/zh333KV/car-marketplace.git
 cd car-marketplace
 ```
 
-### 2. Create `.env`
-
-Copy the example environment file:
-
-```bash
-cp .env.example .env
-```
-
-Then configure the database credentials in `.env`.
-
-Example:
-
-```dotenv
-POSTGRES_DB=autosales_DB
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=password
-```
-
-### 3. Start the application
+### 2. Start the application
 
 ```bash
 docker compose up --build
