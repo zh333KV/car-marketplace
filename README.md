@@ -148,18 +148,9 @@ The Compose configuration uses PostgreSQL 16, waits for the database healthcheck
 
 ---
 
-## 📁 Uploaded Images
+## 📁 Why there is no .env file
 
-Uploaded images are stored outside the Git source tree at runtime.
-
-When using Docker Compose, the application stores uploads in a persistent Docker volume:
-
-```yaml
-volumes:
-  - uploads_data:/app/uploads
-```
-
-This keeps user-uploaded files separate from the application source code and allows the container to be recreated without losing uploaded images.
+This project uses a fixed local PostgreSQL configuration for simplicity and reproducibility. The credentials are intentionally non-sensitive (postgres / password) and are used only for the local Docker environment, so an additional .env file is unnecessary for this project.
 
 ---
 
