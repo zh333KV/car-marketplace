@@ -1,4 +1,4 @@
-# Car marketplace 🚗
+# Car classifieds board 🚗
 
 A web application for buying and selling cars. Users can create vehicle listings with photos and specifications, browse available offers, search by parameters, and manage their own listings.
 
